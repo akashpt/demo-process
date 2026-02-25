@@ -168,10 +168,10 @@
         color: #fff;
         display: flex;
         align-items: center;
-        gap: 6px;
       }
 
       .signal-dot {
+        margin-right: 10px;
         width: 6px;
         height: 6px;
         border-radius: 50%;
@@ -215,12 +215,12 @@
       .header-left {
         display: flex;
         align-items: center;
-        gap: 10px;
       }
       .breadcrumb {
         font-size: 1.05rem;
         font-weight: 600;
         letter-spacing: 1px;
+        margin-right: 10px;
       }
       .header-badge {
         background: rgba(255, 255, 255, 0.14);
@@ -233,7 +233,7 @@
       .status-pill {
         display: flex;
         align-items: center;
-        gap: 7px;
+
         padding: 5px 13px;
         border-radius: 30px;
         font-size: 10px;
@@ -268,6 +268,7 @@
       }
 
       .status-dot {
+        margin-right: 10px;
         width: 8px;
         height: 8px;
         border-radius: 50%;
@@ -286,10 +287,12 @@
       .header-right {
         display: flex;
         align-items: center;
-        gap: 12px;
+
         margin-left: auto;
       }
-
+      .header-user {
+        margin-left: 10px;
+      }
       #liveTime {
         font-size: 0.72rem;
         opacity: 0.78;
@@ -338,7 +341,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 10px;
         background: #111;
       }
 
@@ -348,6 +350,7 @@
       }
 
       .cam-ring {
+        margin-bottom: 10px;
         width: 72px;
         height: 72px;
         border-radius: 50%;
@@ -455,7 +458,7 @@
       .live-badge {
         display: flex;
         align-items: center;
-        gap: 5px;
+
         font-size: 0.62rem;
         color: #f87171;
         letter-spacing: 1.5px;
@@ -496,9 +499,13 @@
       .btn-row {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
       }
-
+      .btn-row button {
+        margin-right: 10px;
+      }
+      .btn-row button:last-child {
+        margin-right: 0px;
+      }
       .btn-main {
         border: none;
         background: transparent;
@@ -507,7 +514,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 6px;
+
         transition: all 0.18s;
         font-weight: 700;
       }
@@ -519,6 +526,7 @@
       .btn-main .btn-label {
         font-size: 10px;
         font-weight: 800;
+        margin-top: 10px;
       }
 
       .btn-start .btn-icon i {
@@ -542,7 +550,6 @@
       .action-row {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
       }
 
       .cone-label {
@@ -634,11 +641,12 @@
       .slider-track {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+
         padding-bottom: 8px;
       }
 
       .slider-track img {
+        margin-bottom: 10px;
         width: 100%;
         height: auto;
         max-height: 120px;
@@ -648,7 +656,9 @@
         cursor: pointer;
         transition: transform 0.15s ease;
       }
-
+      .slider-track img:last-child {
+        margin-bottom: 10px;
+      }
       .slider-track img:hover {
         transform: scale(1.02);
       }
@@ -669,7 +679,7 @@
         transition: all 0.25s ease;
         display: flex;
         align-items: center;
-        gap: 8px;
+
         z-index: 999;
         pointer-events: none;
       }
@@ -685,12 +695,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 14px;
-        background: rgba(8, 10, 12, 0.92);
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100vh;
+        transform: translate(-50%, -50%);
+        background: rgb(8, 10, 12);
         z-index: 2000;
       }
 
       .dot {
+        margin-right: 10px;
         width: 14px;
         height: 14px;
         background: #e53e3e;
