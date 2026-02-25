@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Texa | Cone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+      :root {
+        --font-sans: "Inter", sans-serif;
+        --primary: #722f37;
+        --primary-d: #5a242c;
+        --primary-xl: #f8f0f1;
+        --success: #16a34a;
+        --success-bg: #dcfce7;
+        --danger: #dc2626;
+        --danger-bg: #fee2e2;
+        --warn: #d97706;
+        --warn-bg: #fffbeb;
+        --bg: #f0f2f4;
+        --card: #ffffff;
+        --text: #1a1f2e;
+        --muted: #6b7280;
+        --border: #e2e6ea;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+      a {
+        text-decoration: none;
+      }
+      body {
+        font-family: var(--font-sans);
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+        font-size: 13px;
+      }
+
+      /* ══ SIDEBAR ══ */
+      aside {
+        width: 180px;
+        flex-shrink: 0;
+        background: linear-gradient(180deg, #6b1e27, #722f37 45%, #5a242c);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 3px 0 18px rgba(0, 0, 0, 0.25);
+        z-index: 10;
+      }
+
+      .logo-area {
+        padding: 14px 14px 11px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+      }
+      .logo_div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .logo_div img {
+        width: 110px;
+        background-color: white;
+        border-radius: 6px;
+        padding: 2px;
+      }
+
+      .menu-section {
+        padding: 8px 0;
+        flex: 1;
+      }
+
+      .menu-label {
+        padding: 5px 13px 2px;
+        font-size: 0.54rem;
+        margin-bottom: 10px;
+        text-transform: capitalize;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .menu-item {
+        padding: 13px 13px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.14s;
+        color: rgba(255, 255, 255, 0.7);
+        position: relative;
+      }
+
+      .menu-item:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .menu-item.active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.14);
+      }
+      .menu-item.active::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: rgba(255, 255, 255, 0.82);
+        border-radius: 0 2px 2px 0;
+      }
+      .menu-item i {
+        font-size: 14px;
+        width: 17px;
+        text-align: center;
+        margin-right: 10px;
+      }
+
+      .sidebar-footer {
+        padding: 10px 11px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .signal-block {
+        background: rgba(0, 0, 0, 0.22);
+        border-radius: 7px;
+        padding: 7px 10px;
+      }
+
+      .signal-label {
+        font-size: 0.55rem;
+        color: rgba(255, 255, 255, 0.38);
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+
+      .signal-value {
+        font-size: 1.15rem;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 1px;
+      }
+
+      .signal-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #4ade80;
+        animation: blink 2s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.28;
+        }
+      }
+
+      /* ══ MAIN ══ */
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+        min-width: 0;
+      }
+
+      header {
+        height: 52px;
+        background: var(--primary);
+        color: white;
+        padding: 0 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+        gap: 12px;
+        border-left: 1px solid white;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .breadcrumb {
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      .header-badge {
+        background: rgba(255, 255, 255, 0.14);
+        padding: 5px 8px;
+        border-radius: 20px;
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+      }
+
+      .status-pill {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 5px 13px;
+        border-radius: 30px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        transition: all 0.3s;
+        flex-shrink: 0;
+      }
+
+      .status-pill.waiting {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1.5px solid rgba(255, 220, 80, 0.55);
+        color: #fde68a;
+      }
+
+      .status-pill.running {
+        background: rgba(34, 197, 94, 0.18);
+        border: 1.5px solid rgba(74, 222, 128, 0.6);
+        color: #86efac;
+        animation: pillPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pillPulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+        }
+        50% {
+          box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.15);
+        }
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .status-pill.waiting .status-dot {
+        background: #fbbf24;
+        animation: blink 1.8s infinite;
+      }
+      .status-pill.running .status-dot {
+        background: #4ade80;
+        animation: blink 1.1s infinite;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+      }
+
+      #liveTime {
+        font-size: 0.72rem;
+        opacity: 0.78;
+        letter-spacing: 0.7px;
+      }
+
+      /* ══ METRICS BAR ══ */
+      .metrics-bar {
+        display: flex;
+        gap: 1px;
+        background: var(--border);
+        flex-shrink: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .metric-item {
+        flex: 1;
+        background: var(--card);
+        padding: 20px 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .metric-item:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+      .metric-item:last-child {
+        border-radius: 0 10px 10px 0;
+      }
+
+      .metric-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      .ic-red {
+        background: #fde8e8;
+        color: var(--primary);
+      }
+      .ic-green {
+        background: #dcfce7;
+        color: #16a34a;
+      }
+      .ic-amber {
+        background: #fef3c7;
+        color: #b45309;
+      }
+      .ic-blue {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+
+      .metric-label {
+        font-size: 13px;
+        margin-bottom: 6px;
+        text-transform: capitalize;
+        color: var(--muted);
+      }
+
+      .metric-val {
+        font-size: 0.95rem;
+        font-weight: 500;
+        line-height: 1.1;
+      }
+
+      /* ══ BODY CONTENT ══ */
+      .content {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+        min-height: 0;
+      }
+
+      .camera-wrap {
+        flex: 1;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+
+      .camera-area {
+        flex: 1;
+        background: #080a0c;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.2);
+        border: 1px solid #1c1e24;
+      }
+
+      #video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+      }
+
+      .camera-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: opacity 0.4s;
+      }
+      .camera-placeholder.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .cam-ring {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        border: 2px dashed rgb(255 255 255 / 44%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: rgb(255 255 255 / 44%);
+      }
+
+      .cam-hint {
+        color: rgb(255 255 255 / 44%);
+        font-size: 0.74rem;
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      .cam-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .cam-overlay.visible {
+        opacity: 1;
+      }
+
+      .scan-line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(114, 47, 55, 0.85),
+          rgba(255, 100, 100, 0.95),
+          rgba(114, 47, 55, 0.85),
+          transparent
+        );
+        animation: scanMove 2.5s linear infinite;
+        box-shadow: 0 0 10px rgba(255, 80, 80, 0.5);
+      }
+      @keyframes scanMove {
+        0% {
+          top: 0%;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+
+      .corner-tl,
+      .corner-tr,
+      .corner-bl,
+      .corner-br {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-color: rgba(114, 47, 55, 0.9);
+        border-style: solid;
+      }
+      .corner-tl {
+        top: 12px;
+        left: 12px;
+        border-width: 2px 0 0 2px;
+      }
+      .corner-tr {
+        top: 12px;
+        right: 12px;
+        border-width: 2px 2px 0 0;
+      }
+      .corner-bl {
+        bottom: 12px;
+        left: 12px;
+        border-width: 0 0 2px 2px;
+      }
+      .corner-br {
+        bottom: 12px;
+        right: 12px;
+        border-width: 0 2px 2px 0;
+      }
+
+      .cam-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
+        padding: 1rem 10px 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .cam-tag {
+        font-size: 0.63rem;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .live-badge {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.62rem;
+        color: #f87171;
+        letter-spacing: 1.5px;
+      }
+
+      .live-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #f87171;
+        animation: blink 1.4s infinite;
+      }
+
+      /* ══ CONTROLS PANEL ══ */
+      .controls-sidebar {
+        width: 320px;
+        flex-shrink: 0;
+        background: var(--card);
+        border-left: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .panel-sec {
+        padding: 11px 14px;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+
+      .sec-lbl {
+        font-size: 10px;
+        text-transform: capitalize;
+        color: #b0b8c4;
+        margin-bottom: 9px;
+      }
+
+      .btn-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);  
+        gap: 10px;
+      }
+
+      .btn-main {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: all 0.18s;
+        font-weight: 700;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-main .btn-icon {
+        font-size: 4rem;
+        line-height: 1;
+      }
+
+      .btn-main .btn-label {
+        font-size: 10px;
+        font-weight: 800;
+      }
+
+      .btn-start .btn-icon i {
+        color: #16a34a;
+      }
+      .btn-stop .btn-icon i {
+        color: #dc2626;
+      }
+
+      .btn-start:hover:not(:disabled),
+      .btn-stop:hover:not(:disabled) {
+        transform: translateY(-2px);
+        filter: brightness(1.07);
+      }
+
+      .btn-main:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      .action-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .cone-label {
+        display: block;
+        font-size: 12px;
+        color: #777;
+        margin-bottom: 2px;
+      }
+
+      .cone-box {
+        text-align: center;
+      }
+
+      /* Slider */
+      .image-slider-wrap {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 10px;
+        margin-top: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        position: relative;
+      }
+
+      .slider-container {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slider-track {
+        display: flex;
+        transition: transform 0.6s ease;
+        gap: 12px;
+      }
+      .slider-track img {
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      }
+      .btn_left {
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--bg);
+        position: absolute;
+        bottom: 50%;
+        z-index: 99;
+        left: 0;
+        background-color: var(--primary);
+        padding: 7px 12px;
+        border-radius: 30px;
+      }
+      .btn_right {
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--bg);
+        position: absolute;
+        bottom: 50%;
+        z-index: 99;
+        right: 0;
+        background-color: var(--primary);
+        padding: 7px 12px;
+        border-radius: 30px;
+      }
+      /* Toast + Loader */
+      .toast {
+        position: fixed;
+        bottom: 14px;
+        right: 14px;
+        background: #1a1f2e;
+        color: white;
+        padding: 9px 14px;
+        border-radius: 8px;
+        font-size: 0.78rem;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+        transform: translateY(14px);
+        opacity: 0;
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 999;
+        pointer-events: none;
+      }
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .dots-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        background: rgba(8, 10, 12, 0.92);
+        z-index: 2000;
+      }
+      .dot {
+        width: 14px;
+        height: 14px;
+        background: #e53e3e;
+        border-radius: 50%;
+        animation: pulse 1.4s infinite ease-in-out;
+      }
+      .dot:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .dot:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.4;
+        }
+        50% {
+          transform: scale(1.4);
+          opacity: 1;
+        }
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.92);
+        z-index: 3000;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .modal.show {
+        display: flex;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 92vw;
+        max-height: 92vh;
+      }
+
+      #modalImage {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 20px;
+        background: var(--primary);
+        cursor: pointer;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+        padding: 7px 12px;
+        border-radius: 23px;
+      }
+
+      .modal-close:hover {
+        opacity: 1;
+      }
+
+      .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .modal-nav:hover {
+        background: rgba(114, 47, 55, 0.7);
+      }
+
+      .modal-prev {
+        left: 20px;
+      }
+
+      .modal-next {
+        right: 20px;
+      }
+
+      .modal-nav:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loaderDots" class="dots-loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <aside>
+      <div class="logo-area">
+        <div class="logo_div">
+          <a href="index.html">
+            <img src="img/logo.png" alt="Logo" />
+          </a>
+        </div>
+      </div>
+      <div class="menu-section">
+        <div class="menu-label">Navigation</div>
+        <a href="index.html"
+          ><div class="menu-item active">
+            <i class="fa-solid fa-house"></i> HOME
+          </div></a
+        >
+        <div class="menu-item">
+          <i class="fa-solid fa-chart-simple"></i> REPORT
+        </div>
+        <div class="menu-item">
+          <i class="fa-solid fa-sliders"></i> CONTROLLER
+        </div>
+        <a href="#"
+          ><div class="menu-item">
+            <i class="fa-solid fa-microchip"></i> TRAINING
+          </div></a
+        >
+        <div class="menu-label" style="margin-top: 4px">System</div>
+        <div class="menu-item"><i class="fa-solid fa-gear"></i> SETTINGS</div>
+      </div>
+      <div class="sidebar-footer">
+        <div class="signal-block">
+          <div class="signal-label">Cone Count</div>
+          <div class="signal-value">
+            <span class="signal-dot"></span><span id="signalCount">244</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <header>
+        <div class="header-left">
+          <span class="breadcrumb">Cone Inspection</span>
+          <span class="header-badge">YARN INSPECTION</span>
+        </div>
+        <div id="statusPill" class="status-pill waiting">
+          <span class="status-dot"></span>
+          <span id="statusText">WAITING</span>
+        </div>
+        <div class="header-right">
+          <span id="liveTime">--/--/---- — --:--:--</span>
+          <div class="header-user">
+            <i
+              class="fa-solid fa-user"
+              style="opacity: 0.8; font-size: 0.68rem"
+            ></i>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="camera-wrap">
+          <div class="camera-area">
+            <video id="video" autoplay playsinline muted></video>
+            <div id="placeholder" class="camera-placeholder">
+              <div class="cam-ring"><i class="fa-solid fa-camera"></i></div>
+              <div class="cam-hint">
+                Press the green <strong>START</strong> button to begin
+                inspection
+              </div>
+            </div>
+            <div id="camOverlay" class="cam-overlay">
+              <div class="scan-line"></div>
+              <div class="corner-tl"></div>
+              <div class="corner-tr"></div>
+              <div class="corner-bl"></div>
+              <div class="corner-br"></div>
+              <div class="cam-footer">
+                <span class="cam-tag" id="camTag">—</span>
+                <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image slider -->
+          <div class="image-slider-wrap">
+            <div class="slider-container">
+              <div class="slider-track" id="sliderTrack">
+                <img
+                  src="https://images.unsplash.com/photo-1588345921086-f8f8087d2d8e?w=400"
+                  alt="Yarn 1"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400"
+                  alt="Yarn 2"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=400"
+                  alt="Yarn 3"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=400"
+                  alt="Yarn 4"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400"
+                  alt="Yarn 5"
+                />
+              </div>
+            </div>
+            <div style="">
+              <button class="btn_left" onclick="slideLeft()">
+                <i class="fa-solid fa-angle-left"></i>
+              </button>
+              <button class="btn_right" onclick="slideRight()">
+                <i class="fa-solid fa-angle-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-sidebar">
+          <div class="panel-sec">
+            <div class="sec-lbl">Controls</div>
+            <div class="btn-row">
+              <button id="btnStart" class="btn-main btn-start">
+                <span class="btn-icon"
+                  ><i class="fa-solid fa-circle-play"></i
+                ></span>
+                <span class="btn-label">START</span>
+              </button>
+              <button id="btnStop" class="btn-main btn-stop">
+                <span class="btn-icon"
+                  ><i class="fa-solid fa-circle-stop"></i
+                ></span>
+                <span class="btn-label">STOP</span>
+              </button>
+              <button id="btnCapture" class="btn-main btn-capture">
+                <span class="btn-icon"><i class="fa-solid fa-camera"></i></span>
+                <span class="btn-label">Capture</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="panel-sec">
+            <div class="action-row">
+              <div class="cone-box">
+                <span class="cone-label">1st</span>
+                <p>cone status: <strong class="coneStatus">Good</strong></p>
+              </div>
+              <div class="cone-box">
+                <span class="cone-label">2nd</span>
+                <p>cone status: <strong class="coneStatus">Defect</strong></p>
+              </div>
+              <div class="cone-box">
+                <span class="cone-label">3rd</span>
+                <p>cone status: <strong class="coneStatus">No cone</strong></p>
+              </div>
+              <div class="cone-box">
+                <span class="cone-label">4th</span>
+                <p>cone status: <strong class="coneStatus">No cone</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal for full-screen image view -->
+        <div id="imageModal" class="modal">
+          <span class="modal-close"><i class="fa-solid fa-x"></i></span>
+          <div class="modal-content">
+            <img id="modalImage" src="" alt="Enlarged yarn image" />
+          </div>
+          <button class="modal-nav modal-prev">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="modal-nav modal-next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <div class="toast" id="toast">
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="toastMsg">Done.</span>
+    </div>
+
+    <script>
+      const pad = (n) => String(n).padStart(2, "0");
+
+      function updateTime() {
+        const n = new Date();
+        document.getElementById("liveTime").textContent =
+          `${pad(n.getDate())}/${pad(n.getMonth() + 1)}/${n.getFullYear()} — ${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;
+      }
+      setInterval(updateTime, 1000);
+      updateTime();
+
+      const btnStart = document.getElementById("btnStart");
+      const btnStop = document.getElementById("btnStop");
+      const statusPill = document.getElementById("statusPill");
+      const statusText = document.getElementById("statusText");
+      const video = document.getElementById("video");
+      const placeholder = document.getElementById("placeholder");
+      const camOverlay = document.getElementById("camOverlay");
+      const camTag = document.getElementById("camTag");
+
+      let stream = null,
+        uptimeSec = 0,
+        uptimeTimer = null,
+        metricsTimer = null;
+      let inspected = 0,
+        defects = 0;
+
+      async function startCam() {
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({ video: true });
+          video.srcObject = stream;
+          await video.play();
+          video.style.display = "block";
+          placeholder.classList.add("hidden");
+          camOverlay.classList.add("visible");
+        } catch (err) {
+          alert("Camera access failed.\n" + err.name + " – " + err.message);
+        }
+      }
+
+      function stopCam() {
+        if (stream) {
+          stream.getTracks().forEach((t) => t.stop());
+          stream = null;
+        }
+        video.srcObject = null;
+        video.style.display = "none";
+        placeholder.classList.remove("hidden");
+        camOverlay.classList.remove("visible");
+      }
+
+      function startMetrics() {
+        inspected = 0;
+        defects = 0;
+        metricsTimer = setInterval(() => {
+          inspected += Math.floor(Math.random() * 4) + 1;
+          if (Math.random() < 0.12) defects++;
+          document.getElementById("mInspected").textContent = inspected;
+          document.getElementById("mPassRate").textContent = inspected
+            ? ((1 - defects / inspected) * 100).toFixed(1) + "%"
+            : "—";
+          document.getElementById("mDefects").textContent = defects;
+          document.getElementById("signalCount").textContent = 244 + inspected;
+        }, 900);
+      }
+
+      btnStart.onclick = () => {
+        btnStart.disabled = true;
+        btnStop.disabled = false;
+        statusPill.className = "status-pill running";
+        statusText.textContent = "RUNNING";
+
+        camTag.textContent = "Inspection in progress";
+
+        uptimeSec = 0;
+        uptimeTimer = setInterval(() => {
+          uptimeSec++;
+          document.getElementById("mUptime").textContent =
+            `${pad(Math.floor(uptimeSec / 60))}:${pad(uptimeSec % 60)}`;
+        }, 1000);
+
+        startMetrics();
+        startCam();
+      };
+
+      btnStop.onclick = () => {
+        btnStop.disabled = true;
+        btnStart.disabled = false;
+        statusPill.className = "status-pill waiting";
+        statusText.textContent = "WAITING";
+
+        clearInterval(uptimeTimer);
+        clearInterval(metricsTimer);
+        stopCam();
+
+        document.getElementById("mInspected").textContent = "—";
+        document.getElementById("mPassRate").textContent = "—";
+        document.getElementById("mDefects").textContent = "—";
+        document.getElementById("mUptime").textContent = "00:00";
+        camTag.textContent = "—";
+      };
+
+      // Slider logic
+      let slideIndex = 0;
+      const track = document.getElementById("sliderTrack");
+      const slideWidth = 152; // image 140px + gap 12px
+
+      function slideRight() {
+        slideIndex++;
+        if (slideIndex > 2) slideIndex = 0;
+        track.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+      }
+
+      function slideLeft() {
+        slideIndex--;
+        if (slideIndex < 0) slideIndex = 2;
+        track.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+      }
+
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("loaderDots").style.display = "none";
+        }, 1400);
+      });
+    </script>
+    <script>
+      // ── Modal Image Viewer ────────────────────────────────────────
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      const closeBtn = document.querySelector(".modal-close");
+      const prevBtn = document.querySelector(".modal-prev");
+      const nextBtn = document.querySelector(".modal-next");
+
+      let currentSlideImages = [];
+      let currentModalIndex = 0;
+
+      function openModal(index) {
+        currentSlideImages = Array.from(
+          document.querySelectorAll("#sliderTrack img"),
+        );
+        currentModalIndex = index;
+
+        showModalImage();
+        modal.classList.add("show");
+      }
+
+      function showModalImage() {
+        if (currentSlideImages.length === 0) return;
+
+        const img = currentSlideImages[currentModalIndex];
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+
+        prevBtn.disabled = currentModalIndex === 0;
+        nextBtn.disabled = currentModalIndex === currentSlideImages.length - 1;
+      }
+
+      function closeModal() {
+        modal.classList.remove("show");
+        // Optional: reset src to avoid showing old image briefly
+        setTimeout(() => {
+          modalImg.src = "";
+        }, 300);
+      }
+
+      // Event listeners
+      document.querySelectorAll("#sliderTrack img").forEach((img, index) => {
+        img.style.cursor = "pointer";
+        img.addEventListener("click", () => openModal(index));
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (currentModalIndex > 0) {
+          currentModalIndex--;
+          showModalImage();
+        }
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (currentModalIndex < currentSlideImages.length - 1) {
+          currentModalIndex++;
+          showModalImage();
+        }
+      });
+
+      // Keyboard support (left/right arrows + Esc)
+      window.addEventListener("keydown", (e) => {
+        if (!modal.classList.contains("show")) return;
+
+        if (e.key === "ArrowLeft") prevBtn.click();
+        if (e.key === "ArrowRight") nextBtn.click();
+        if (e.key === "Escape") closeModal();
+      });
+    </script>
+  </body>
+</html>
