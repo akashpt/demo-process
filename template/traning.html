@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Texa | Cone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <div id="loaderDots" class="dots-loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <aside>
+      <div class="logo-area">
+        <div class="logo_div">
+          <a href="index.html"
+            ><img src="../static/img/logo.png" alt="Logo"
+          /></a>
+        </div>
+      </div>
+      <div class="menu-section">
+        <div class="menu-label">Navigation</div>
+        <a href="index.html"
+          ><div class="menu-item">
+            <i class="fa-solid fa-house"></i> HOME
+          </div></a
+        >
+        <!-- <div class="menu-item">
+          <i class="fa-solid fa-chart-simple"></i> REPORT
+        </div>
+        <div class="menu-item">
+          <i class="fa-solid fa-sliders"></i> CONTROLLER
+        </div> -->
+        <a href="traning.html"
+          ><div class="menu-item active">
+            <i class="fa-solid fa-microchip"></i> TRAINING
+          </div></a
+        >
+        <!-- <div class="menu-label" style="margin-top: 4px">System</div>
+        <div class="menu-item"><i class="fa-solid fa-gear"></i> SETTINGS</div> -->
+      </div>
+      <div class="sidebar-footer">
+        <div class="signal-block">
+          <div class="signal-label">Cone Count</div>
+          <div class="signal-value">
+            <span class="signal-dot"></span><span id="signalCount">244</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <header>
+        <div class="header-left">
+          <span class="breadcrumb">Cone Inspection</span>
+          <span class="header-badge">YARN INSPECTION</span>
+        </div>
+        <div id="statusPill" class="status-pill waiting">
+          <span class="status-dot"></span>
+          <span id="statusText">WAITING</span>
+        </div>
+        <div class="header-right">
+          <span id="liveTime">--/--/---- — --:--:--</span>
+          <div class="header-user">
+            <i
+              class="fa-solid fa-user"
+              style="opacity: 0.8; font-size: 0.68rem"
+            ></i>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="camera-wrap">
+          <div class="camera-area">
+            <video id="video" autoplay playsinline muted></video>
+            <div id="placeholder" class="camera-placeholder">
+              <div class="cam-ring"><i class="fa-solid fa-camera"></i></div>
+              <div class="cam-hint">
+                Press the green <strong>START</strong>
+                <span style="display: flex">button to begin inspection</span>
+              </div>
+            </div>
+            <div id="camOverlay" class="cam-overlay">
+              <div class="scan-line"></div>
+              <div class="corner-tl"></div>
+              <div class="corner-tr"></div>
+              <div class="corner-bl"></div>
+              <div class="corner-br"></div>
+              <div class="cam-footer">
+                <span class="cam-tag" id="camTag">—</span>
+                <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-sidebar">
+          <div class="panel-sec">
+            <div class="sec-lbl">Controls</div>
+            <div class="btn-row">
+              <button id="btnStart" class="btn-main btn-start">
+                <span class="btn-icon"
+                  ><i class="fa-solid fa-circle-play"></i
+                ></span>
+                <span class="btn-label">START</span>
+              </button>
+              <button id="btnStop" class="btn-main btn-stop">
+                <span class="btn-icon"
+                  ><i class="fa-solid fa-circle-stop"></i
+                ></span>
+                <span class="btn-label">STOP</span>
+              </button>
+              <button id="btnCapture" class="btn-main btn-capture">
+                <span class="btn-icon"><i class="fa-solid fa-camera"></i></span>
+                <span class="btn-label">Capture</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ← NEW DROPDOWN SECTION added here -->
+          <div class="panel-sec">
+            <div class="sec-lbl">Choose Camera Option</div>
+            <div class="select-wrapper">
+              <select id="inspectionMode">
+                <option value="auto">Pradiction</option>
+                <option value="manual">Traning</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-arrow"></i>
+            </div>
+          </div>
+
+          <!-- Recent Captures -->
+          <div class="image-slider-wrap">
+            <div class="sec-lbl">Recent Captures</div>
+            <div class="slider-container">
+              <div class="slider-track" id="sliderTrack">
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800"
+                  alt="Yarn 1"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"
+                  alt="Yarn 2"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800"
+                  alt="Yarn 3"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800"
+                  alt="Yarn 4"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800"
+                  alt="Yarn 5"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="imageModal" class="modal">
+          <span class="modal-close"><i class="fa-solid fa-x"></i></span>
+          <div class="modal-content">
+            <img id="modalImage" src="" alt="Enlarged yarn image" />
+          </div>
+          <button class="modal-nav modal-prev">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="modal-nav modal-next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <div class="toast" id="toast">
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="toastMsg">Done.</span>
+    </div>
+
+    <script src="../static/script/script.js"></script>
+  </body>
+</html>
