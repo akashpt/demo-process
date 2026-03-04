@@ -17,6 +17,7 @@
     />
 
     <link rel="stylesheet" href="../static/css/style.css" />
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
   </head>
   <body>
     <div id="loaderDots" class="dots-loader">
@@ -196,6 +197,15 @@
       <i class="fa-solid fa-circle-check"></i>
       <span id="toastMsg">Done.</span>
     </div>
+    <script>
+      new QWebChannel(qt.webChannelTransport, function (channel) {
+        window.bridge = channel.objects.bridge;
+      });
+
+      function sendToPython() {
+        bridge.showMessage();
+      }
+    </script>
     <script src="../static/script/script.js"></script>
   </body>
 </html>
